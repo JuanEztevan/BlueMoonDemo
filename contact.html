@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Moon | Contáctanos</title>
+    <meta name="description"
+        content="Ponte en contacto con Blue Moon. Envíanos tus dudas, sugerencias o pedidos especiales.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@300;400;700&family=Ms+Madi&family=Caudex:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="contact-page">
+    <div class="stars-bg"></div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="menu.html">Menú</a></li>
+                <li><a href="gallery.html">Galería</a></li>
+                <li><a href="contact.html" class="active">Contáctanos</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <!-- Contenido principal -->
+    <main>
+        <section class="contact-section">
+            <div class="contact-box">
+                <h2 class="section-title">CONTÁCTANOS</h2>
+                <hr class="section-divider">
+                <p class="item-description">¿Tienes una consulta o quieres saber más de nosotros? Envíanos tu mensaje y
+                    te responderemos pronto.</p>
+
+                <form action="mailto:bluemooncoffeeshop@gmail.com" method="POST" enctype="text/plain"
+                    class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="Nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellido</label>
+                            <input type="text" id="apellido" name="Apellido" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="correo">Correo electrónico</label>
+                            <input type="email" id="correo" name="Correo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="Teléfono">
+                        </div>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="mensaje">Ingrese su mensaje</label>
+                        <textarea id="mensaje" name="Mensaje" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="send-button">ENVIAR</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+
+    <footer>
+        <p>Made with 💙 by Blue Moon Team</p>
+    </footer>
+    <script>
+        window.addEventListener('load', () => document.body.classList.add('loaded'));
+    </script>
+
+    <script>
+        // Estrellas animadas (reutiliza tu script base)
+        function createStars() {
+            const starsContainer = document.querySelector('.stars-bg');
+            const starCount = 30;
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (2 + Math.random() * 2) + 's';
+                if (Math.random() > 0.5) {
+                    star.classList.add('line');
+                    star.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+                } else {
+                    star.classList.add('dot');
+                }
+                starsContainer.appendChild(star);
+            }
+        }
+        createStars();
+    </script>
+</body>
+
+</html>

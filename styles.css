@@ -1,0 +1,988 @@
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-blue: #2c3e64;
+    --dark-blue: #1b244b;
+    --light-blue: #5a7ba8;
+    --accent-red: #d4203f;
+    --text-light: #e8e6e3;
+    --text-white: #ffffff;
+    --text-cream: #f5f3f0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inria Serif', serif;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+    color: var(--text-white);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+body.loaded main {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+main {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* ============================================
+   ANIMATED BACKGROUND STARS
+   ============================================ */
+.stars-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.6);
+    opacity: 0;
+    animation: twinkle 3s infinite;
+}
+
+.star.dot {
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+}
+
+.star.line {
+    width: 20px;
+    height: 1px;
+    border-radius: 1px;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* ============================================
+   HEADER & NAVIGATION
+   ============================================ */
+header {
+    position: relative;
+    z-index: 10;
+    padding: 2rem 1rem 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--text-cream);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--text-white);
+}
+
+nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--text-white);
+}
+
+.page-header {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    font-family: 'Caudex', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 8px;
+    color: var(--text-white);
+}
+
+/* ============================================
+   CONTAINER & LAYOUT
+   ============================================ */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
+   HOMEPAGE STYLES
+   ============================================ */
+.hero {
+    text-align: center;
+    padding: 2rem 0 4rem;
+}
+
+.logo {
+    margin: 3rem auto 2rem;
+    max-width: 450px;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+.tagline {
+    font-family: 'Caudex', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-cream);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    opacity: 0.95;
+}
+
+.main-title {
+    font-family: 'Ms Madi', cursive;
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: var(--text-white);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.decorative-line {
+    width: 200px;
+    height: 1px;
+    background: repeating-linear-gradient(to right,
+            var(--text-white) 0px,
+            var(--text-white) 8px,
+            transparent 8px,
+            transparent 12px);
+    border: none;
+    margin: 1.5rem auto;
+    opacity: 0.6;
+}
+
+.description {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-cream);
+    margin: 2rem auto;
+    max-width: 600px;
+}
+
+/* ============================================
+   BOTÓN "VER CARTA" - ESTILO DORADO
+   ============================================ */
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #ccc4ae;
+    color: #111;
+    font-family: 'Caudex', serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border: none;
+    padding: 0.9rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: fit-content;
+    margin: 1.5rem auto 3rem;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+    background: #ffffff;
+    transform: translateY(-2px);
+}
+
+.cta-button .material-symbols-outlined {
+    font-size: 20px;
+    line-height: 1;
+}
+
+/* ============================================
+   GALLERY
+   ============================================ */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 3rem auto;
+    max-width: 750px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 4px;
+    aspect-ratio: 1/1;
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ============================================
+   HOURS & SOCIAL
+   ============================================ */
+.hours {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-cream);
+    margin: 2.5rem auto 1.5rem;
+}
+
+.instagram-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: transparent;
+    color: var(--text-white);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    margin: 1rem auto;
+}
+
+.instagram-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--text-white);
+}
+
+.instagram-button svg {
+    width: 16px;
+    height: 15px;
+}
+
+/* ============================================
+   GALLERY (INICIO)
+   ============================================ */
+.hero .gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 imágenes por fila */
+    gap: 1rem;
+    margin: 3rem auto;
+    max-width: 1000px;
+    /* más ancho que antes */
+    padding: 0;
+    /* sin padding extra */
+}
+
+/* Quita los márgenes laterales solo en la galería */
+.hero .container {
+    max-width: 1100px;
+    /* un poco más ancho para dar espacio */
+    padding: 0 0.5rem;
+    /* reduce márgenes laterales */
+}
+
+@media (max-width: 900px) {
+    .hero .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .hero .gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ============================================
+   MENU PAGE STYLES
+   ============================================ */
+.menu-section {
+    padding: 3rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+.section-title {
+    font-family: 'Caudex', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text-white);
+}
+
+.section-divider {
+    width: 120px;
+    height: 1px;
+    background: var(--text-white);
+    border: none;
+    margin: 1rem auto 2.5rem;
+    opacity: 0.5;
+}
+
+/* ============================================
+   GRID DE ITEMS EN SECCIONES DE MENÚ
+   ============================================ */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    justify-items: center;
+    align-items: start;
+}
+
+/* Cada producto conserva tu estilo y animación */
+.menu-item {
+    margin-bottom: 0;
+    /* el gap del grid controla el espacio */
+    max-width: 280px;
+    text-align: left;
+    opacity: 0;
+    transform: translateX(27px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.menu-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Imagen y texto */
+.item-image {
+    max-width: 100%;
+    margin: 0 0 1rem 0;
+    border-radius: 4px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.item-image.small {
+    max-width: 180px;
+}
+
+.item-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Títulos, descripción y precio a la izquierda */
+.item-name {
+    font-family: 'Caudex', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-white);
+    text-align: left;
+    margin-bottom: 0.8rem;
+}
+
+.item-description {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-cream);
+    text-align: left;
+    margin: 0.5rem 0 0.8rem 0;
+    max-width: 600px;
+}
+
+.item-description em {
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.item-price {
+    font-family: 'Caudex', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-white);
+    text-align: left;
+    margin-top: 1rem;
+}
+
+/* ============================================
+   FILTRO DE SECCIONES ("CARTA")
+   ============================================ */
+.menu-filter-section {
+    text-align: center;
+    margin: 3rem auto 2.5rem;
+    padding: 0 1rem;
+    /* margen lateral en móviles */
+}
+
+.menu-filter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Botones base */
+.filter-btn {
+    background: none;
+    border: 2px solid transparent;
+    color: #bfbfbf;
+    /* gris claro */
+    font-family: 'Caudex', serif;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    padding: 0.6rem 1.4rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    color: var(--text-white);
+}
+
+/* Botón activo */
+.filter-btn.active {
+    border-color: #c9a74e;
+    /* dorado amarrillento oscuro */
+    color: #f1e3b3;
+}
+
+/* ============================================
+   RESPONSIVE - MÓVIL
+   ============================================ */
+@media (max-width: 768px) {
+    .menu-filter-section {
+        margin: 2.5rem auto;
+        padding: 0 1.5rem;
+    }
+
+    .menu-filter {
+        gap: 0.8rem;
+    }
+
+    .filter-btn {
+        font-size: 0.95rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-filter {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filter-btn {
+        width: 100%;
+        max-width: 220px;
+        text-align: center;
+        padding: 0.6rem 0;
+    }
+}
+
+/* Responsive refinado */
+@media (max-width: 900px) {
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ============================================
+   ADICIONALES SECTION
+   ============================================ */
+.adicionales .menu-item.special {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.special-text {
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.special-text strong {
+    font-weight: 700;
+    color: var(--text-white);
+}
+
+/* ============================================
+   CTA SECTION
+   ============================================ */
+.cta-section {
+    padding: 2rem 0 3rem;
+    text-align: center;
+}
+
+.order-button {
+    display: inline-block;
+    background: var(--text-white);
+    color: var(--dark-blue);
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.order-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   GALLERY PAGE STYLES (solo para gallery.html)
+   ============================================ */
+.gallery-page-section {
+    padding: 3rem 0;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.gallery-page-section .section-title {
+    font-family: 'Caudex', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--text-white);
+}
+
+.gallery-page-section .section-divider {
+    width: 120px;
+    height: 1px;
+    background: var(--text-white);
+    border: none;
+    margin: 1rem auto 2.5rem;
+    opacity: 0.5;
+}
+
+.gallery-page-section p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-cream);
+    text-align: center;
+    margin: 0 auto 2.5rem;
+    max-width: 700px;
+}
+
+/* === GRID DE IMÁGENES === */
+.gallery-page-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    justify-items: center;
+    padding: 0 2rem;
+}
+
+.gallery-page-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0;
+    aspect-ratio: 9 / 16;
+    background-color: rgba(255, 255, 255, 0.05);
+    width: 100%;
+    max-width: 320px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-page-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Hover: zoom + oscurecer */
+.gallery-page-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(70%);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+    .gallery-page-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 1.5rem;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-page-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1.2rem;
+    }
+}
+
+/* ============================================
+   CONTACT PAGE (VISIBLE + ESTÉTICO)
+   ============================================ */
+.contact-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 1rem;
+    position: relative;
+    z-index: 5;
+    /* Se asegura de ir por encima del fondo */
+    min-height: 85vh;
+}
+
+.contact-box {
+    background-color: #29395f;
+    /* Azul oscuro con transparencia */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 3rem 2.5rem;
+    max-width: 750px;
+    width: 100%;
+    color: #bfbfbf;
+    /* texto gris */
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+}
+
+.contact-box .section-title {
+    color: var(--text-white);
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.contact-form {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-group.full {
+    width: 100%;
+}
+
+label {
+    color: #ccc;
+    font-family: 'Caudex', serif;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+input,
+textarea {
+    background: rgba(255, 255, 255, 0.1);
+    /* gris oscuro semitransparente */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    color: #e0e0e0;
+    font-family: 'Inria Serif', serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #c9a74e;
+}
+
+.send-button {
+    background: #c9a74e;
+    color: #111;
+    font-family: 'Caudex', serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border: none;
+    padding: 0.9rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: fit-content;
+    margin: 1rem auto 0;
+    display: block;
+}
+
+.send-button:hover {
+    background: #e2be64;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 700px) {
+    .contact-box {
+        padding: 2rem 1.2rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+
+
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+    text-align: center;
+    padding: 2rem 1rem 3rem;
+    position: relative;
+    z-index: 1;
+}
+
+footer p {
+    font-size: 0.9rem;
+    color: var(--text-cream);
+    opacity: 0.8;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+    nav ul {
+        gap: 1.2rem;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+    }
+
+    .page-header h1 {
+        font-size: 2rem;
+        letter-spacing: 4px;
+    }
+
+    .logo {
+        max-width: 320px;
+    }
+
+    .main-title {
+        font-size: 2.5rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+    }
+
+    .description {
+        font-size: 0.95rem;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        max-width: 350px;
+    }
+
+    .section-title {
+        font-size: 1.1rem;
+        letter-spacing: 3px;
+    }
+
+    .item-name {
+        font-size: 1.2rem;
+    }
+
+    .item-description {
+        font-size: 0.9rem;
+    }
+
+    .item-price {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 1.5rem 0.8rem 0;
+    }
+
+    nav ul {
+        gap: 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .cta-button,
+    .order-button {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.95rem;
+    }
+
+    .gallery {
+        max-width: 280px;
+    }
+}
+
+/* ============================================
+   LANDSCAPE MOBILE FIX
+   ============================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        padding: 1rem 0 2rem;
+    }
+
+    .logo {
+        margin: 1.5rem auto 1rem;
+        max-width: 280px;
+    }
+
+    .main-title {
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 600px;
+    }
+}
+
+/* ============================================
+   TABLET LANDSCAPE
+   ============================================ */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        max-width: 720px;
+    }
+
+    .gallery {
+        max-width: 650px;
+    }
+}
+
+/* ============================================
+   LARGE SCREENS
+   ============================================ */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1000px;
+    }
+
+    .main-title {
+        font-size: 4rem;
+    }
+
+    .description {
+        font-size: 1.1rem;
+    }
+
+    .gallery {
+        max-width: 850px;
+        gap: 1.5rem;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .star {
+        animation: none;
+        opacity: 0.3;
+    }
+}
+
+/* Focus states for accessibility */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--text-white);
+    outline-offset: 4px;
+}

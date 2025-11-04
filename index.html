@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Moon Coffee Shop</title>
+    <meta name="description" content="Sabores para llevar, momentos para compartir.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@300;400;700&family=Ms+Madi&family=Caudex:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div class="stars-bg"></div>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="menu.html">Menú</a></li>
+                <li><a href="gallery.html">Galería</a></li>
+                <li><a href="contact.html">Contáctanos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="logo">
+                    <img src="img/logo.png" alt="Blue Moon Logo">
+                </div>
+
+                <h2 class="tagline">Tu cafetería para llevar en Ica</h2>
+
+                <h1 class="main-title">Blue Moon Coffee Shop</h1>
+
+                <hr class="decorative-line">
+
+                <p class="description">
+                    Sabores para llevar, momentos para compartir.<br>
+                    ¡Lleva un poco de felicidad contigo! Pide tu delivery con nosotros.
+                </p>
+
+                <a href="menu.html" class="cta-button">
+                    <span class="material-symbols-outlined">menu_book</span>
+                    <span>Ver carta</span>
+                </a>
+
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="img/gallery-1.jpg" alt="Gallery 1">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/gallery-2.png" alt="Gallery 2">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/gallery-3.png" alt="Gallery 3">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/gallery-4.jpg" alt="Gallery 4>">
+                    </div>
+                </div>
+
+                <p class="hours">
+                    Horario de atención: 08:00 a. m. a 6:00 p. m.<br>
+                    Lunes a Domingo
+                </p>
+
+                <a href="https://www.instagram.com/bluemoon.ica/" class="instagram-button" target="_blank"
+                    rel="noopener">
+                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none">
+                        <rect x="1" y="1" width="14" height="13" rx="3" stroke="currentColor" stroke-width="1.5" />
+                        <circle cx="8" cy="7.5" r="3" stroke="currentColor" stroke-width="1.5" />
+                        <circle cx="12.5" cy="3.5" r="0.75" fill="currentColor" />
+                    </svg>
+                    <span>Síguenos en @bluemoon.ica</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with 💙 by Blue Moon Team</p>
+    </footer>
+
+    <script>
+        // Simple fade-in animation on load
+        window.addEventListener('load', function () {
+            document.body.classList.add('loaded');
+        });
+
+        // Animated stars background
+        function createStars() {
+            const starsContainer = document.querySelector('.stars-bg');
+            const starCount = 30;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (2 + Math.random() * 2) + 's';
+
+                // Random star type (line or dot)
+                if (Math.random() > 0.5) {
+                    star.classList.add('line');
+                    star.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+                } else {
+                    star.classList.add('dot');
+                }
+
+                starsContainer.appendChild(star);
+            }
+        }
+
+        createStars();
+    </script>
+</body>
+
+</html>
