@@ -12,6 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@300;400;700&family=Ms+Madi&family=Caudex:wght@400;700&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 
 <body class="menu-page">
@@ -19,9 +20,13 @@
 
     <header>
         <nav>
+            <button class="menu-toggle" aria-label="Abrir menú">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="menu.html" class="active">Menú</a></li>
+                <li><a href="about.html">Nosotros</a></li>
                 <li><a href="gallery.html">Galería</a></li>
                 <li><a href="contact.html">Contáctanos</a></li>
             </ul>
@@ -210,8 +215,8 @@
                             <img src="img/milk.png" alt="Leche vegetal">
                         </div>
                         <p class="item-description special-text">
-                            <strong>Leche vegetal</strong> 〈 Disponible en almendra y coco 〉<br>
-                            <em>Para acompañar tus bebidas</em> <strong>S/. 2.00 +</strong>
+                            <strong>Leche vegetal</strong> <br>〈 Disponible en almendra y coco 〉<br>
+                            <em>Para acompañar tus bebidas</em> <br> <strong>S/. 2.00 +</strong>
                         </p>
                     </article>
                 </div>
@@ -286,6 +291,18 @@
             sections.forEach(sec => {
                 if (!sec.classList.contains("bebidas")) sec.style.display = "none";
             });
+        });
+    </script>
+
+    <script>
+        // --- MENÚ HAMBURGUESA RESPONSIVE ---
+        const toggleBtn = document.querySelector('.menu-toggle');
+        const navList = document.querySelector('nav ul');
+
+        toggleBtn.addEventListener('click', () => {
+            navList.classList.toggle('show');
+            const icon = toggleBtn.querySelector('.material-symbols-outlined');
+            icon.textContent = navList.classList.contains('show') ? 'close' : 'menu';
         });
     </script>
 </body>
