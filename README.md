@@ -23,9 +23,13 @@ Later deployed as a responsive web prototype to explore real-world interaction a
 ## Repository Structure  
 
 /design/ → Figma design export and reference images
+
 /img/ → Web assets used in the prototype
+
 /about.html → About page with mission & vision
+
 /index.html → Homepage with hero section
+
 /css/ → Custom layout and responsive styling
 
 ## Links  
